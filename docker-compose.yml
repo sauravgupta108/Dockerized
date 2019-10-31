@@ -1,0 +1,24 @@
+version: "3"
+services:
+  ist:
+    restart: always
+    build: ./ist/
+    container_name: ist_cont
+    volumes:
+      - ./ist/:/opt/app/code/ist
+    
+    networks:
+      - allinone
+  
+  est:
+    restart: always
+    build: ./est/
+    container_name: est_cont
+    volumes:
+      - ./est/:/opt/app/code/est
+    
+    networks:
+      - allinone
+
+networks:
+  allinone:
