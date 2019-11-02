@@ -3,9 +3,11 @@ services:
   ist:
     restart: always
     build: ./ist/
-    container_name: ist_cont
+    container_name: ist
     volumes:
       - ./ist/:/opt/app/code/ist
+      - ./ist/static:/opt/app/code/ist/static
+      - ./ist/media:/opt/app/code/ist/media
     
     networks:
       - allinone
@@ -13,12 +15,23 @@ services:
   est:
     restart: always
     build: ./est/
-    container_name: est_cont
+    container_name: est
     volumes:
       - ./est/:/opt/app/code/est
+      - ./est/static:/opt/app/code/est/static
+      - ./est/media:/opt/app/code/est/media
     
     networks:
       - allinone
+
+  router:
+    restart: always
+    image: nginx
+    container_name: router
+    depends_on:
+      - ist
+      - est
+    
 
 networks:
   allinone:
