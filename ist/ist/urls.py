@@ -19,5 +19,5 @@ from delhi import views as vw
 
 urlpatterns = [
     path('ist_console/', admin.site.urls),
-    path('ist/', vw.index)
+    path('ist', vw.index)
 ]

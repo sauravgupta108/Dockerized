@@ -26,12 +26,17 @@ services:
 
   router:
     restart: always
-    image: nginx
+    build: ./nginx/
     container_name: router
     depends_on:
       - ist
       - est
-    
+    networks:
+      - allinone
+    ports:
+      - 80:80
+      - 7000:7000
+      - 7500:7500
 
 networks:
   allinone:

@@ -5,7 +5,10 @@ ENV PYTHONPATH /usr/local/lib/python3.6/site-packages
 
 # Create directory inside container for code
 RUN mkdir -p /opt/app/code/est
-WORKDIR /opt/app/code/est
+RUN mkdir /opt/app/code/logs
+WORKDIR /opt/app/code/logs
+RUN touch access.log error.log static-access.log
+WORKDIR ../est
 
 # Copy requirements.txt file for requirements to install
 COPY requirements.txt .
